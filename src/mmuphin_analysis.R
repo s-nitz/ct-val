@@ -15,11 +15,11 @@
   library(vegan)
   library(curated)
 
-  um_demog_v34 <- read.table(file = 'UgandaMaternalV3V4.16s_DADA2.sample_details.tsv', sep = '\t', header = TRUE)
-  um_taxon_v34 <- read.table(file = 'UgandaMaternalV3V4.16s_DADA2.taxon_abundance.tsv', sep = '\t', header = TRUE)
+  um_demog_v34 <- read.table(file = '../data/UgandaMaternalV3V4.16s_DADA2.sample_details.tsv', sep = '\t', header = TRUE)
+  um_taxon_v34 <- read.table(file = '../data/UgandaMaternalV3V4.16s_DADA2.taxon_abundance.tsv', sep = '\t', header = TRUE)
   
-  um_demog_v12 <- read.table(file = 'UgandaMaternalV1V2.16s_DADA2.sample_details.tsv', sep = '\t', header = TRUE)
-  um_taxon_v12 <- read.table(file = 'UgandaMaternalV1V2.16s_DADA2.taxon_abundance.tsv', sep = '\t', header = TRUE)
+  um_demog_v12 <- read.table(file = '../data/UgandaMaternalV1V2.16s_DADA2.sample_details.tsv', sep = '\t', header = TRUE)
+  um_taxon_v12 <- read.table(file = '../data/UgandaMaternalV1V2.16s_DADA2.taxon_abundance.tsv', sep = '\t', header = TRUE)
   
   View(um_demog_v12)
   View(um_demog_v34)

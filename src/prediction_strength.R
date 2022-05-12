@@ -12,11 +12,11 @@ library("ggbreak")
 library("patchwork")
 library("grid")
 
-biom_file <- read_biom("/Users/NEK/Downloads/v1v2abs.biom")
+biom_file <- read_biom("../data/v1v2abs.biom")
 biom_file_cts <- as.matrix(biom_data(biom_file))
 biom_file_cts <- t(biom_file_cts)
 rownames(biom_file_cts)
-map <- read.table("/Users/NEK/Downloads/UgandaMaternalV1V2.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
+map <- read.table("../data/UgandaMaternalV1V2.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
 common.ids <- intersect(rownames(map), rownames(biom_file_cts))
 biom_file_cts <- biom_file_cts[common.ids,]
 map <- map[common.ids,]
@@ -39,15 +39,15 @@ length(cluster2) # 41
 choiceclust <- cluster2
 level <- "Genus"
 
-biom_file_cts <- read.csv("/Users/NEK/Downloads/splittaxa_relativeabundances_V1V2.csv", row.names = 1)
+biom_file_cts <- read.csv("../data/splittaxa_relativeabundances_V1V2.csv", row.names = 1)
 colnames(biom_file_cts) <- gsub("X", "", colnames(biom_file_cts))
 OTU <- otu_table(biom_file_cts, taxa_are_rows = TRUE)
 
-map <- read.table("/Users/NEK/Downloads/UgandaMaternalV1V2.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
+map <- read.table("../data/UgandaMaternalV1V2.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
 clusts <- p$clustering # add clusters from previous analysis
 map$Cluster <- factor(clusts)
 
-taxes <- read.csv("/Users/NEK/Downloads/taxonomy_tablev1v2.csv", row.names = 1)
+taxes <- read.csv("../data/taxonomy_tablev1v2.csv", row.names = 1)
 taxes_table <- tax_table(as.matrix(taxes))
 taxes_table[taxes_table == ""] <- NA
 
@@ -72,7 +72,7 @@ grid.draw(mylegend)
 ####################################################
 # using vegan (http://metagenome.cs.umn.edu/microbiomecodebrowser/data/globalgut-66-adults/prediction.strength.html)
 # read in biom file
-biom_file <- read_biom("/Users/NEK/Downloads/UgandaMaternalV3V4.16s_DADA2.taxon_abundance.biom")
+biom_file <- read_biom("../data/UgandaMaternalV3V4.16s_DADA2.taxon_abundance.biom")
 
 # extract OTU counts from biom table
 # TODO: is it a problem that we haven't collapsed OTU counts into genus (L6) and phylum (L2)?
@@ -83,7 +83,7 @@ biom_file_cts <- t(biom_file_cts)
 rownames(biom_file_cts)
 
 # read in map
-map <- read.table("/Users/NEK/Downloads/UgandaMaternalV3V4.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
+map <- read.table("../data/UgandaMaternalV3V4.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
 
 # find the overlapping samples
 common.ids <- intersect(rownames(map), rownames(biom_file_cts))
@@ -131,15 +131,15 @@ length(cluster3) # 30
 
 
 #####
-biom_file_cts <- read.csv("/Users/NEK/Downloads/splittaxa_relativeabundances_V3V4.csv", row.names = 1)
+biom_file_cts <- read.csv("../data/splittaxa_relativeabundances_V3V4.csv", row.names = 1)
 colnames(biom_file_cts) <- gsub("X", "", colnames(biom_file_cts))
 OTU <- otu_table(biom_file_cts, taxa_are_rows = TRUE)
 
-map <- read.table("/Users/NEK/Downloads/UgandaMaternalV3V4.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
+map <- read.table("../data/UgandaMaternalV3V4.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
 clusts <- p$clustering # add clusters from previous analysis
 map$Cluster <- factor(clusts)
 
-taxes <- read.csv("/Users/NEK/Downloads/taxonomy_table.csv", row.names = 1)
+taxes <- read.csv("../data/taxonomy_table.csv", row.names = 1)
 taxes_table <- tax_table(as.matrix(taxes))
 taxes_table[taxes_table == "0"] <- NA
 
@@ -155,15 +155,15 @@ plot_bar(physeq2, fill = level) +
 
 #####
 
-biom_file <- read_biom("/Users/NEK/Downloads/UgandaMaternalV3V4.16s_DADA2.taxon_abundance.biom")
+biom_file <- read_biom("../data/UgandaMaternalV3V4.16s_DADA2.taxon_abundance.biom")
 biom_file_cts <- as.matrix(biom_data(biom_file))
 OTU <- otu_table(biom_file_cts, taxa_are_rows = TRUE)
 
-map <- read.table("/Users/NEK/Downloads/UgandaMaternalV3V4.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
+map <- read.table("../data/UgandaMaternalV3V4.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
 clusts <- p$clustering # add clusters from previous analysis
 map$Cluster <- factor(clusts)
 
-taxes <- read.csv("/Users/NEK/Downloads/taxonomy_table.csv", row.names = 1)
+taxes <- read.csv("../data/taxonomy_table.csv", row.names = 1)
 taxes_table <- tax_table(as.matrix(taxes))
 taxes_table[taxes_table == "0"] <- NA
 
@@ -176,7 +176,7 @@ level <- "Order"
 biom_file_cts_2 <- t(t(biom_file_cts)[choiceclust,])
 biom_file_cts_2[biom_file_cts_2 == 0] <- NA
 
-map <- read.table("/Users/NEK/Downloads/UgandaMaternalV3V4.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
+map <- read.table("../data/UgandaMaternalV3V4.16s_DADA2.sample_details.tsv", sep = "\t", head = T, row.names = 1)
 clusts <- p$clustering # add clusters from previous analysis
 map$Cluster <- factor(clusts)
 
